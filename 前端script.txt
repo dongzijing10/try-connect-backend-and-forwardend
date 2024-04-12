@@ -1,0 +1,25 @@
+<script>
+import $ from 'jquery';
+import { ref } from 'vue';
+export default {
+  name: 'HomeView',
+  setup() {
+        let products = ref('');
+        $.ajax({
+          url: 'https://356b-58-213-223-12.ngrok-free.app/getInfo',
+          method: 'POST',
+          headers: { 'accept': 'application/json' },
+          data: JSON.stringify({id: 2002}),
+        })
+        .done(function(response) {
+          console.log(response);
+        })
+        .fail(function(error) {
+          console.log(error);
+        });
+        return {
+            products,
+        }
+    }
+}
+</script>
